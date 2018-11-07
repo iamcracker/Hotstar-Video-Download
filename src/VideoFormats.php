@@ -40,7 +40,7 @@ class VideoFormats
         
         if (!is_numeric($videoId)) {
             $formats["status"]       = $availability;
-            $formats["errorMessage"] = "Invalid video ID fetched from URL";
+            $formats["errorMessage"] = "Invalid video ID fetched from URL. Error message : ".$output;
         } else {
             foreach ($jsonArray as $key => $value) {
                 if (strcmp($videoId, strval($value['id'])) == 0) {
@@ -87,7 +87,7 @@ class VideoFormats
             
             if (stripos($result, "Invalid") !== false) {
                 $formats['status']       = 'false';
-                $formats["errorMessage"] = "Can't fetch video ID or Invalid URL";
+                $formats["errorMessage"] = "Can't fetch video ID or Invalid URL. Error message : ".$output;
             } else {
                 $formats['status']        = 'true';
                 $metadata                 = json_decode($result, true);
